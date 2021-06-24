@@ -12,6 +12,7 @@ namespace SchoolAPI.Data
     {
         public StudentProfile()
         {
+            this.CreateMap<StudentModel, Student>();
             this.CreateMap<Student, StudentModel>()
                 .ForMember(s => s.NameOfDepartment, b => b.MapFrom(c => c.Department.Name));
         }
