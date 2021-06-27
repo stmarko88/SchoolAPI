@@ -14,6 +14,6 @@ namespace SchoolAPI.Data.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Department Department { get; set; }
-
+        public ICollection<Final> Finals { get; set; }
     }
 }

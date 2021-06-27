@@ -8,13 +8,19 @@ using System.Threading.Tasks;
 
 namespace SchoolAPI.Data
 {
-    public class StudentProfile : Profile
+    public class SchoolProfile : Profile
     {
-        public StudentProfile()
+        public SchoolProfile()
         {
             this.CreateMap<StudentModel, Student>();
             this.CreateMap<Student, StudentModel>()
                 .ForMember(s => s.NameOfDepartment, b => b.MapFrom(c => c.Department.Name));
+
+            this.CreateMap<Final, FinalModel>()
+                .ReverseMap();
+
+            this.CreateMap<Course, CourseModel>()
+                .ReverseMap();
         }
     }
 }

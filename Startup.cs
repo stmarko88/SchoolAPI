@@ -35,6 +35,7 @@ namespace SchoolAPI
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IFinalRepository, FinalRepository>();
 
             //putanja na projekat gde su mapiranja. Moze da bude drugi projekat
             services.AddAutoMapper(Assembly.GetExecutingAssembly());

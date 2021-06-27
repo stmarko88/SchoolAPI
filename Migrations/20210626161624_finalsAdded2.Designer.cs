@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolAPI.Data;
 
 namespace SchoolAPI.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210626161624_finalsAdded2")]
+    partial class finalsAdded2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,35 +130,6 @@ namespace SchoolAPI.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("Finals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CourseId = 1,
-                            Date = new DateTime(2021, 6, 26, 0, 0, 0, 0, DateTimeKind.Local),
-                            Mark = 10,
-                            Name = "Primer polaganja",
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CourseId = 1,
-                            Date = new DateTime(2021, 6, 26, 0, 0, 0, 0, DateTimeKind.Local),
-                            Mark = 10,
-                            Name = "Primer polaganja",
-                            StudentId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CourseId = 2,
-                            Date = new DateTime(2021, 6, 26, 0, 0, 0, 0, DateTimeKind.Local),
-                            Mark = 10,
-                            Name = "Primer polaganja",
-                            StudentId = 1
-                        });
                 });
 
             modelBuilder.Entity("SchoolAPI.Data.Entities.Student", b =>

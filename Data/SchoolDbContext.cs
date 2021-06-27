@@ -17,7 +17,7 @@ namespace SchoolAPI.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Department> Departments { get; set; }
-
+        public DbSet<Final> Finals { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -31,6 +31,10 @@ namespace SchoolAPI.Data
 
             modelBuilder.Entity<Student>().HasData(new Student { Id = 1, FirstName = "John", LastName = "Doe", DepartmentId = 1});
             modelBuilder.Entity<Student>().HasData(new Student { Id = 2, FirstName = "Mira", LastName = "Doe", DepartmentId = 1 });
+
+            modelBuilder.Entity<Final>().HasData(new Final { Id = 1, Name = "Primer polaganja", CourseId = 1, Date = DateTime.Today, Mark = 10, StudentId = 1 });
+            modelBuilder.Entity<Final>().HasData(new Final { Id = 2, Name = "Primer polaganja", CourseId = 1, Date = DateTime.Today, Mark = 10, StudentId = 2 });
+            modelBuilder.Entity<Final>().HasData(new Final { Id = 3, Name = "Primer polaganja", CourseId = 2, Date = DateTime.Today, Mark = 10, StudentId = 1 });
         }
     } 
 }
