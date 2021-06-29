@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +40,21 @@ namespace SchoolAPI
 
             //putanja na projekat gde su mapiranja. Moze da bude drugi projekat
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddApiVersioning(opt => 
+            {
+                opt.AssumeDefaultVersionWhenUnspecified = true;
+                opt.DefaultApiVersion = new ApiVersion(1, 1);
+                opt.ReportApiVersions = true;
+                opt.ApiVersionReader = new UrlSegmentApiVersionReader();
+                /*
+                opt.ApiVersionReader = ApiVersionReader.Combine(
+                        new HeaderApiVersionReader("X-Version"),
+                        new QueryStringApiVersionReader("ver", "version")
+                    );
+                */
+                }); 
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

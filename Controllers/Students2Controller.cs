@@ -12,17 +12,16 @@ using System.Threading.Tasks;
 
 namespace SchoolAPI.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
-    [ApiVersion("1.0")]
-    [ApiVersion("1.1")]
+    [Route("api/v{version:apiVersion}/students")]
+    [ApiVersion("2.0")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class Students2Controller : ControllerBase
     {
         private readonly IStudentRepository _studentRepository;
         private readonly IMapper _mapper;
         private readonly LinkGenerator _linkGenerator;
 
-        public StudentsController(IStudentRepository studentRepository, IMapper mapper, LinkGenerator linkGenerator)
+        public Students2Controller(IStudentRepository studentRepository, IMapper mapper, LinkGenerator linkGenerator)
         {
             _studentRepository = studentRepository;
             _mapper = mapper;
@@ -53,28 +52,7 @@ namespace SchoolAPI.Controllers
         }
 
         [HttpGet("id:int")]
-        [MapToApiVersion("1.0")]
         public ActionResult<StudentModel> Get(int id) // IActionResult
-        {
-            try
-            {
-                var result = _studentRepository.GetStudentById(id);
-                if (result == null)
-                {
-                    return NotFound();
-                }
-                StudentModel student = _mapper.Map<StudentModel>(result);
-                return student;
-            }
-            catch (Exception ex)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Unknown error");
-            }
-        }
-
-        [HttpGet("id:int")]
-        [MapToApiVersion("1.1")]
-        public ActionResult<StudentModel> Get11(int id) // IActionResult
         {
             try
             {
